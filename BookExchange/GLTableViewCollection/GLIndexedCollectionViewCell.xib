@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="collectionViewCellID" id="gTV-IL-0wX" customClass="GLIndexedCollectionViewCell" customModule="BookExchange" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="270" height="320"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="270" height="320"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="ond-a3-6bG">
+                        <rect key="frame" x="85" y="0.0" width="100" height="130"/>
+                        <color key="backgroundColor" red="0.82143919301156554" green="0.82143919301156554" blue="0.82143919301156554" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="100" id="Abh-rE-XJh"/>
+                            <constraint firstAttribute="height" constant="130" id="huJ-n1-Yno"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="6"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.clipToBounds" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </imageView>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="og4-rJ-Uku">
+                        <rect key="frame" x="85" y="135" width="100" height="68.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Моби Дик Мешной пирожок с капустой" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mJs-0S-fLt">
+                                <rect key="frame" x="0.0" y="0.0" width="65.5" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="50" id="TTb-vF-uJu"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Герман Мелвилл" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SLh-pZ-zJX">
+                                <rect key="frame" x="0.0" y="55" width="91.5" height="13.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="100" id="VgV-m3-66y"/>
+                        </constraints>
+                    </stackView>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="ond-a3-6bG" firstAttribute="top" secondItem="hSX-Mj-jLC" secondAttribute="top" id="4lf-Lk-W3H"/>
+                <constraint firstItem="og4-rJ-Uku" firstAttribute="top" secondItem="ond-a3-6bG" secondAttribute="bottom" constant="5" id="imP-Fr-HvP"/>
+                <constraint firstItem="ond-a3-6bG" firstAttribute="centerX" secondItem="hSX-Mj-jLC" secondAttribute="centerX" id="mbE-pM-weO"/>
+                <constraint firstItem="og4-rJ-Uku" firstAttribute="centerX" secondItem="hSX-Mj-jLC" secondAttribute="centerX" id="uFS-wI-Abx"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="hSX-Mj-jLC"/>
+            <size key="customSize" width="270" height="320"/>
+            <point key="canvasLocation" x="313.60000000000002" y="231.18440779610197"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="placeholder" width="18" height="18"/>
+    </resources>
+</document>
