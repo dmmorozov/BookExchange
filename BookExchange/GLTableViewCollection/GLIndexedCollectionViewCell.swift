@@ -30,6 +30,8 @@
 import UIKit
 
 class GLIndexedCollectionViewCell: UICollectionViewCell {
+    @IBOutlet var authorLabel: UILabel!
+    @IBOutlet var bookTitleLabel: UILabel!
     static let identifier: String = "collectionViewCellID"
 
     override func awakeFromNib() {

@@ -11,7 +11,9 @@ import UIKit
 class BookShelveViewController: UIViewController {
     fileprivate let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
     fileprivate let itemsPerRow: CGFloat = 3
-
+    @IBOutlet var addButton: UIButton!
+    @IBOutlet var plusImage: UIImageView!
+    
     @IBOutlet var containerView: UIView!
     
     override func viewDidLoad() {
@@ -19,6 +21,8 @@ class BookShelveViewController: UIViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "GLTableCollectionViewController")
         add(controller, to: containerView)
+        view.addSubview(addButton)
+        view.addSubview(plusImage)
     }
 }
 

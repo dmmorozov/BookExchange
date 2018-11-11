@@ -57,6 +57,8 @@ final class GLTableCollectionViewController: UITableViewController, UICollection
         readingBooks = testNowReadingBooks()
         personalBooks = testMyBooks()
         
+        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 67, right: 0)
+        
         // Uncomment the following line to preserve selection between
         // presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -140,18 +142,64 @@ final class GLTableCollectionViewController: UITableViewController, UICollection
             cell!.selectionStyle = .none
             cell!.collectionViewPaginatedScroll = paginationEnabled
         }
+        
+        let longPressGR = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(longPressGR:)))
+        longPressGR.minimumPressDuration = 0.5
+        longPressGR.delaysTouchesBegan = true
+        cell!.collectionView.addGestureRecognizer(longPressGR)
 
         return cell!
+    }
+    
+    @objc
+    func handleLongPress(longPressGR: UILongPressGestureRecognizer) {
+        let optionMenu = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        let freeAction = UIAlertAction(title: "Перевести в \"Cвободные\"", style: .default, handler: {
+            (alert: UIAlertAction!) -> Void in
+            
+        })
+        
+        let readNowAction = UIAlertAction(title: "Читаю сейчас", style: .default, handler:
+        {
+            (alert: UIAlertAction!) -> Void in
+        })
+        
+        let findReadersAction = UIAlertAction(title: "Найти читающих", style: .default, handler:
+        {
+            (alert: UIAlertAction!) -> Void in
+        })
+        
+        let findSimilarAction = UIAlertAction(title: "Найти похожую книгу", style: .default, handler:
+        {
+            (alert: UIAlertAction!) -> Void in
+        })
+        
+        let deleteAction = UIAlertAction(title: "Убрать с полки", style: .destructive, handler:
+        {
+            (alert: UIAlertAction!) -> Void in
+        })
+        let cancelAction = UIAlertAction(title: "Закрыть", style: .cancel, handler:
+        {
+            (alert: UIAlertAction!) -> Void in
+        })
+        optionMenu.addAction(freeAction)
+        optionMenu.addAction(readNowAction)
+        optionMenu.addAction(findReadersAction)
+        optionMenu.addAction(findSimilarAction)
+        optionMenu.addAction(deleteAction)
+        optionMenu.addAction(cancelAction)
+        self.present(optionMenu, animated: true, completion: nil)
     }
 
     override func tableView(_: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
         case 0:
-            return "Личные книги" + "\(personalBooks.count.description)"
+            return "Личные книги " + "(\(personalBooks.count.description))"
         case 1:
-            return "Свободные книги" + "\(freeBooks.count.description)"
+            return "Свободные книги " + "(\(freeBooks.count.description))"
         case 2:
-            return "Читаю (1)"
+            return "Читаю " + "(\(readingBooks.count.description))"
         default:
             return "Другое"
         }
@@ -160,7 +208,7 @@ final class GLTableCollectionViewController: UITableViewController, UICollection
     // MARK: <UITableView Delegate>
 
     override func tableView(_: UITableView, heightForRowAt _: IndexPath) -> CGFloat {
-        return 210
+        return 220
     }
 
     override func tableView(_: UITableView, heightForHeaderInSection _: Int) -> CGFloat {
@@ -175,18 +223,34 @@ final class GLTableCollectionViewController: UITableViewController, UICollection
         guard let cell: GLCollectionTableViewCell = cell as? GLCollectionTableViewCell else {
             return
         }
-
+        if indexPath.section != numberOfSections - 1 {
+            let separatorLine = UIImageView.init(frame: CGRect(x: 15, y: 210, width: cell.frame.width - 30, height: 1))
+            separatorLine.backgroundColor = #colorLiteral(red: 0.2653463781, green: 0.2983484566, blue: 0.3327510953, alpha: 1)
+            cell.addSubview(separatorLine)
+        }
+        
         cell.setCollectionView(dataSource: self, delegate: self, indexPath: indexPath)
     }
 
     // MARK: <UICollectionView Data Source>
 
-    func numberOfSections(in _: UICollectionView) -> Int {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
 
-    func collectionView(_: UICollectionView, numberOfItemsInSection _: Int) -> Int {
-        return numberOfCollectionItems
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection _: Int) -> Int {
+        let indexedCollectionView = collectionView as? GLIndexedCollectionView
+        let section = indexedCollectionView!.indexPath.section
+        switch section {
+        case 0:
+            return personalBooks.count
+        case 1:
+            return freeBooks.count
+        case 2:
+            return readingBooks.count
+        default:
+            return 0
+        }
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -197,9 +261,23 @@ final class GLTableCollectionViewController: UITableViewController, UICollection
         guard let indexedCollectionView: GLIndexedCollectionView = collectionView as? GLIndexedCollectionView else {
             fatalError("UICollectionView must be of GLIndexedCollectionView type")
         }
-
+        print("DEbug6:" + indexPath.description)
         // Configure the cell...
         //cell.backgroundColor = colorsDict[indexedCollectionView.indexPath.section]?[indexPath.row]
+        switch indexedCollectionView.indexPath.section {
+        case 0:
+            cell.authorLabel.text = personalBooks[indexPath.row].author
+            cell.bookTitleLabel.text = personalBooks[indexPath.row].title
+        case 1:
+            cell.authorLabel.text = freeBooks[indexPath.row].author
+            cell.bookTitleLabel.text = freeBooks[indexPath.row].title
+        case 2:
+            cell.authorLabel.text = readingBooks[indexPath.row].author
+            cell.bookTitleLabel.text = readingBooks[indexPath.row].title
+        default:
+            break
+        }
+        
         cell.backgroundColor = #colorLiteral(red: 0.2114404142, green: 0.2392562032, blue: 0.2780771852, alpha: 1)
 
         return cell
@@ -207,7 +285,7 @@ final class GLTableCollectionViewController: UITableViewController, UICollection
 
     // MARK: <UICollectionViewDelegate Flow Layout>
 
-    let collectionTopInset: CGFloat = 0
+    let collectionTopInset: CGFloat = 15
     let collectionBottomInset: CGFloat = 0
     let collectionLeftInset: CGFloat = 15
     let collectionRightInset: CGFloat = 15
@@ -217,8 +295,8 @@ final class GLTableCollectionViewController: UITableViewController, UICollection
     }
 
     func collectionView(_: UICollectionView, layout _: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let tableViewCellHeight: CGFloat = 210//tableView.rowHeight
-        let collectionItemWidth: CGFloat = 140 - (collectionLeftInset + collectionRightInset)
+        let tableViewCellHeight: CGFloat = 220//tableView.rowHeight
+        let collectionItemWidth: CGFloat = 130 - (collectionLeftInset + collectionRightInset)
         //let collectionViewHeight: CGFloat = collectionItemWidth
 
         return CGSize(width: collectionItemWidth, height: tableViewCellHeight)

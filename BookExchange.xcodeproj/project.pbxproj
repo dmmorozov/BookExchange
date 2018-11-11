@@ -13,6 +13,7 @@
 		1A065A54219736A3001BE16F /* GLTableCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A065A50219736A3001BE16F /* GLTableCollectionViewController.swift */; };
 		1A065A55219736A3001BE16F /* GLIndexedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A065A51219736A3001BE16F /* GLIndexedCollectionViewCell.swift */; };
 		1A065A56219736A3001BE16F /* GLIndexedCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A065A52219736A3001BE16F /* GLIndexedCollectionViewCell.xib */; };
+		1A065A5921976B8D001BE16F /* DealsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A065A5721976AEA001BE16F /* DealsViewController.swift */; };
 		1A65322A2195F89F0024C3B5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6532292195F89F0024C3B5 /* AppDelegate.swift */; };
 		1A65322C2195F89F0024C3B5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A65322B2195F89F0024C3B5 /* ViewController.swift */; };
 		1A65322F2195F89F0024C3B5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A65322D2195F89F0024C3B5 /* Main.storyboard */; };
@@ -31,6 +32,7 @@
 		1A065A50219736A3001BE16F /* GLTableCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GLTableCollectionViewController.swift; sourceTree = "<group>"; };
 		1A065A51219736A3001BE16F /* GLIndexedCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GLIndexedCollectionViewCell.swift; sourceTree = "<group>"; };
 		1A065A52219736A3001BE16F /* GLIndexedCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLIndexedCollectionViewCell.xib; sourceTree = "<group>"; };
+		1A065A5721976AEA001BE16F /* DealsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealsViewController.swift; sourceTree = "<group>"; };
 		1A6532262195F89F0024C3B5 /* BookExchange.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookExchange.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A6532292195F89F0024C3B5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1A65322B2195F89F0024C3B5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -65,6 +67,7 @@
 				1A065A50219736A3001BE16F /* GLTableCollectionViewController.swift */,
 				1A065A51219736A3001BE16F /* GLIndexedCollectionViewCell.swift */,
 				1A065A52219736A3001BE16F /* GLIndexedCollectionViewCell.xib */,
+				1A065A5721976AEA001BE16F /* DealsViewController.swift */,
 			);
 			path = GLTableViewCollection;
 			sourceTree = "<group>";
@@ -247,6 +250,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1A65322C2195F89F0024C3B5 /* ViewController.swift in Sources */,
+				1A065A5921976B8D001BE16F /* DealsViewController.swift in Sources */,
 				1A653240219620D90024C3B5 /* BookShelveViewController.swift in Sources */,
 				1A065A54219736A3001BE16F /* GLTableCollectionViewController.swift in Sources */,
 				1A065A4D21971F1D001BE16F /* AddNewBookViewController.swift in Sources */,
